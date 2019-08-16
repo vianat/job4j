@@ -18,7 +18,7 @@ public class MaxTest {
         int result = max.max(2, 0);
         assertThat(result, is(2));
     }
-
+    @Test
     public void whenLeftEqualRight() {
         Max max = new Max();
         int result = max.max(2, 2);
