@@ -22,4 +22,22 @@ public class FindLoop {
         }
         return rst;
     }
+    /*
+     * возвразает индекс найденного в массиве в диапазоне "старт-финиш" элемента, -1 если не найден
+     * @param bound - длинна создаваемого массива
+     * @param start - начальный индекс диапазона
+     * @param finish - последний индекс диапазона
+     * @param el - искомый элемент
+     * @return индекс элемента в массиве или -1
+     * */
+    public int indexOf(int[] data, int el, int start, int finish) {
+        int rst = -1; // если элемента нет в массиве, то возвращаем -1.
+        for ( int i = start; i < data[finish]; i++) {
+            if (data[i] == el) {
+                rst = i;
+                break;
+            }
+        }
+        return rst;
+    }
 }

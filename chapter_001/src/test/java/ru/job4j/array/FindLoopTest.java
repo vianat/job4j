@@ -25,4 +25,27 @@ public class FindLoopTest {
         int expect = -1;
         assertThat(result, is(expect));
     }
+
+    @Test
+    public void start3Finish8() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[] {1,2,3,4,5,6,7,8,9,10,11};
+        int value = 5;
+        int start = 3;
+        int finish = 8;
+        int result = find.indexOf(input, value, start, finish);
+        int expect = 4;
+        assertThat(result, is(expect));
+    }
+    @Test
+    public void start3Finish9() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[] {1,2,3,4,5,6,7,8,9,10,11};
+        int value = 75;
+        int start = 3;
+        int finish = 9;
+        int result = find.indexOf(input, value, start, finish);
+        int expect = -1;
+        assertThat(result, is(expect));
+    }
 }
