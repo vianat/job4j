@@ -1,11 +1,8 @@
 package ru.job4j.array;
 
-import java.util.Arrays;
-
 public class Matrix {
     public int[][] multiple(int size) {
         int[][] table = new int[size][size];
-
 
         for (int i = 0, t = 1; i < size; i++, t++){
 
