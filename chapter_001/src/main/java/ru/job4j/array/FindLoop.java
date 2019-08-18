@@ -1,4 +1,7 @@
 package ru.job4j.array;
+
+import java.util.Arrays;
+
 /*
  * Class FindLoop поиск индекса элемента в массиве
  * @author Sergei Nikiforov
@@ -39,5 +42,24 @@ public class FindLoop {
             }
         }
         return rst;
+    }
+
+    public int[] sort(int[] data) {
+        System.out.println(Arrays.toString(data));
+
+        for (int min = 0; min < data.length - 1; min++) {
+            int least = min;
+            for (int j = min + 1; j < data.length; j++) {
+                if (data[j] < data[least]) {
+                    least = j;
+                }
+            }
+            int tmp = data[min];
+            data[min] = data[least];
+            data[least] = tmp;
+        }
+
+        System.out.println(Arrays.toString(data));
+        return data;
     }
 }
