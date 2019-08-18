@@ -15,10 +15,9 @@ public class Check {
     public boolean mono(boolean[] data) {
         System.out.println(Arrays.toString(data));
         boolean result = false;
-        int trueCount = 0, falseCount = 0;
+        int falseCount = 0;
         for (int i = 0; i < data.length; i++) {
-            if (data[i] == true) trueCount++;
-            else falseCount++;
+            if (data[i] == false) falseCount++;
         }
         if (falseCount == 0) result = true;
         return result;
