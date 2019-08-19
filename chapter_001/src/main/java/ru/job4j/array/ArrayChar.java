@@ -17,7 +17,9 @@ public class ArrayChar {
         char[] pref = prefix.toCharArray();
         char[] wrd = word.toCharArray();
 
-        if (!word.startsWith(prefix)) result = false;
+        if (!word.startsWith(prefix)) {
+            result = false;
+        }
         return result;
     }
 }

@@ -13,7 +13,7 @@ public class Square {
      * */
     public int[] calculate(int bound) {
         int[] rst = new int[bound];
-        for (int i = 0, x = 1; i < bound; i++, x++){
+        for (int i = 0, x = 1; i < bound; i++, x++) {
             rst[i] = x * x;
         }
         return rst;

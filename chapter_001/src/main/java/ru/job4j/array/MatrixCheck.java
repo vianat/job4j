@@ -16,8 +16,9 @@ public class MatrixCheck {
         boolean check = data[0][0];
 
         for (int x = 0, y = 0; x < data.length; x++, y++) {
-                if (data[x][y] != check) return false;
-
+                if (data[x][y] != check) {
+                    return false;
+                }
         }
         return result;
     }

@@ -17,9 +17,13 @@ public class Check {
         boolean result = false;
         int falseCount = 0;
         for (int i = 0; i < data.length; i++) {
-            if (data[i] == false) falseCount++;
+            if (data[i] == false) {
+                falseCount++;
+            }
         }
-        if (falseCount == 0) result = true;
+        if (falseCount == 0) {
+            result = true;
+        }
         return result;
     }
 }

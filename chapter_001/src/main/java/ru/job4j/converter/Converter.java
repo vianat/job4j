@@ -19,8 +19,8 @@ public class Converter {
     }
 
     public static void main(String[] args) {
-        int[] in = {140,60,3,4};
-        int[] expected = {2,1,210,240};
+        int[] in = {140, 60, 3, 4};
+        int[] expected = {2, 1, 210, 240};
 
         boolean passed = expected[0] == rubleToEuro(in[0]);
         boolean passed1 = expected[1] == rubleToDollar(in[1]);
