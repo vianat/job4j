@@ -14,15 +14,11 @@ public class Check {
      * */
     public boolean mono(boolean[] data) {
         System.out.println(Arrays.toString(data));
-        boolean result = false;
-        int falseCount = 0;
+        boolean result = true;
         for (int i = 0; i < data.length; i++) {
-            if (data[i] == false) {
-                falseCount++;
+            if (data[0] != data[i]) {
+                return false;
             }
-        }
-        if (falseCount == 0) {
-            result = true;
         }
         return result;
     }
