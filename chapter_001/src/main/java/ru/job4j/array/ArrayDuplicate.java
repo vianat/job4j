@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class ArrayDuplicate {
     public String[] remove(String[] array) {
-//        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array));
         int count = 0;
         int length = array.length;
 
@@ -21,8 +21,9 @@ public class ArrayDuplicate {
                 }
             }
         }
-        System.out.println(count);
+        System.out.println(length);
         System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(Arrays.copyOf(array, length)));
         return Arrays.copyOf(array, length);
     }
 }
