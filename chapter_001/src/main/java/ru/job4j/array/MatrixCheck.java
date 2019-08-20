@@ -16,13 +16,11 @@ public class MatrixCheck {
         boolean result = true;
         boolean check = data[0][0];
 
-        for (int x = 0, y = 0; x < data.length; x++, y++) {
-                if (data[x][y] != check) {
-                    return false;
-                }
-        }
-        for (int x = 0, y = data.length - 1; x < data.length; x++, y--) {
+        for (int x = 0, y = 0, m = 0, n = data.length - 1; x < data.length; x++, y++, m++, n--) {
             if (data[x][y] != check) {
+                return false;
+            }
+            if (data[m][n] != check) {
                 return false;
             }
         }
