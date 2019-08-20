@@ -21,7 +21,7 @@ public class MatrixCheck {
                     return false;
                 }
         }
-        for (int x = 0, y = data.length-1; x < data.length ; x++, y--) {
+        for (int x = 0, y = data.length - 1; x < data.length; x++, y--) {
             if (data[x][y] != check) {
                 return false;
             }
