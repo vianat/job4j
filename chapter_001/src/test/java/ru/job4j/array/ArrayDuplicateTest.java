@@ -11,6 +11,6 @@ public class ArrayDuplicateTest {
         String[] expected = {"a", "b", "c", "d", "e"};
         ArrayDuplicate duplicate = new ArrayDuplicate();
         String[] result = duplicate.remove(input);
-        assertThat(result, is(expected));
+        assertThat(result, arrayContainingInAnyOrder(expected));
     }
 }
