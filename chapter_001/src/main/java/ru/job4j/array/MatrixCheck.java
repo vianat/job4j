@@ -1,7 +1,5 @@
 package ru.job4j.array;
 
-import java.util.Arrays;
-
 /*
  * Class MatrixCheck проверяет равенство значений в массиве по диагоналям
  * @author Sergei Nikiforov
@@ -19,7 +17,6 @@ public class MatrixCheck {
         boolean check = data[0][0];
 
         for (int x = 0, y = 0; x < data.length; x++, y++) {
-            System.out.println(data[x][y]);
                 if (data[x][y] != check) {
                     return false;
                 }
