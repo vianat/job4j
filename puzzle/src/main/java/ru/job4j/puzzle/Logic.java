@@ -71,19 +71,35 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        //check horizontal line
-        //заполянем новый массив (длиной 5) элементами из
-        //одной горизонтально строчки входящего массива,
-        //в новом проверяем сумму элементов (если все однёрки = сумме 5) возвращем true
-        int[] line = new int[5];
+        //создаём 2 массива
+        //кидаем в один горизонтальные значения из водящего массива
+        //во второй вертикальные значения
+        //проверяем сумму элементов (если все однёрки = сумме 5) возвращем true
+        int[] horizontalLine = new int[5];
+        int[] verticalLine = new int[5];
+
         for (int out = 0; out < table.length; out++) {
             for (int in = 0; in < table.length; in++) {
-                line[in] = table[out][in];
-                //System.out.println(Arrays.toString(line));
+                horizontalLine[in] = table[out][in];
+                verticalLine[in] = table[in][out];
             }
             int summLine = 0;
             boolean flag = false;
-            for (int x : line) {
+            // проверяем горизонталь
+            for (int x : horizontalLine) {
+                summLine += x;
+                if (summLine == 5 ) {
+                    flag = true;
+                }
+            }
+            if (flag){
+                result = true;
+                break;
+            }
+            summLine = 0;
+            flag = false;
+            // проверяем вертикаль
+            for (int x : verticalLine) {
                 summLine += x;
                 if (summLine == 5 ) {
                     flag = true;
@@ -94,30 +110,8 @@ public class Logic {
                 break;
             }
 
-        }
-        //check vertical line
-        //тоже самое только работаем с вертикальной строчкой (поменяно in-out местами)
-        for (int out = 0; out < table.length; out++) {
-            for (int in = 0; in < table.length; in++) {
-                line[in] = table[in][out];
-                System.out.println(Arrays.toString(line));
-            }
-            int summLine = 0;
-            boolean flag = false;
-            for (int x : line) {
-                summLine += x;
-                if (summLine == 5 ) {
-                    flag = true;
-                }
-            }
-            if (flag){
-                result = true;
-                break;
-            }
 
         }
-
-
         return result;
     }
 
