@@ -71,46 +71,28 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        //создаём 2 массива
-        //кидаем в один горизонтальные значения из водящего массива
-        //во второй вертикальные значения
-        //проверяем сумму элементов (если все однёрки = сумме 5) возвращем true
-        int[] horizontalLine = new int[5];
-        int[] verticalLine = new int[5];
+
+        int summLineHorizontal = 0;
+        int summLineVertical = 0;
 
         for (int out = 0; out < table.length; out++) {
             for (int in = 0; in < table.length; in++) {
-                horizontalLine[in] = table[out][in];
-                verticalLine[in] = table[in][out];
-            }
-            int summLine = 0;
-            boolean flag = false;
-            // проверяем горизонталь
-            for (int x : horizontalLine) {
-                summLine += x;
-                if (summLine == 5 ) {
-                    flag = true;
-                }
-            }
-            if (flag){
-                result = true;
-                break;
-            }
-            summLine = 0;
-            flag = false;
-            // проверяем вертикаль
-            for (int x : verticalLine) {
-                summLine += x;
-                if (summLine == 5 ) {
-                    flag = true;
-                }
-            }
-            if (flag){
-                result = true;
-                break;
-            }
 
+                summLineHorizontal += table[out][in];
+                summLineVertical += table[in][out];
 
+                if (summLineHorizontal == table.length) {
+                    result = true;
+                    break;
+                }
+                if (summLineVertical == table.length) {
+                    result = true;
+                    break;
+                }
+
+            }
+            summLineHorizontal = 0;
+            summLineVertical = 0;
         }
         return result;
     }

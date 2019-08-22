@@ -19,7 +19,7 @@ public class MatrixCheck {
                 result = false;
                 break;
             }
-            if (data[data.length -1][0] != data[data.length - 1 - i][i]) {
+            if (data[data.length - 1][0] != data[data.length - 1 - i][i]) {
                 result = false;
                 break;
             }
