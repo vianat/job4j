@@ -87,7 +87,6 @@ public class Logic {
                 if (summLineVertical == table.length) {
                     return true;
                 }
-
             }
             summLineHorizontal = 0;
             summLineVertical = 0;
