@@ -15,7 +15,6 @@ public class SqAreaTest {
         double s = SqArea.square(p, k);
         assertThat(s, is(expected));
     }
-
     @Test
     public void whenp6k2s2() {
         int k = 2;

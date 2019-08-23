@@ -5,7 +5,6 @@ public class Mortgage {
         int year = 0;
         double total = amount + amount * (percent / 100);
         int payPerYear = monthly * 12;
-
         if ((total - payPerYear) < 0) {
             return 1;
         }

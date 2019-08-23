@@ -16,7 +16,6 @@ public class SqMaxTest {
         int s = SqMax.max(first, second, third, forth);
         assertThat(s, is(expected));
     }
-
     @Test
     public void test1() {
         int first = 1;
@@ -27,7 +26,6 @@ public class SqMaxTest {
         int s = SqMax.max(first, second, third, forth);
         assertThat(s, is(expected));
     }
-
     @Test
     public void test2() {
         int first = 4;
@@ -38,7 +36,6 @@ public class SqMaxTest {
         int s = SqMax.max(first, second, third, forth);
         assertThat(s, is(expected));
     }
-
     @Test
     public void test3() {
         int first = 1;

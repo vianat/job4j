@@ -1,5 +1,4 @@
 package ru.job4j.array;
-import java.util.Arrays;
 /*
  * Class Check проверяет различие элементов в массиве
  * @author Sergei Nikiforov
@@ -13,7 +12,6 @@ public class Check {
      * @return true - если все эелменты равны, иначе false
      * */
     public boolean mono(boolean[] data) {
-        System.out.println(Arrays.toString(data));
         boolean result = true;
         for (int i = 0; i < data.length; i++) {
             if (data[0] != data[i]) {

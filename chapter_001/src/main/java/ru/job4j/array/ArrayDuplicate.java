@@ -21,9 +21,9 @@ public class ArrayDuplicate {
                 }
             }
         }
-        System.out.println(length);
-        System.out.println(Arrays.toString(array));
-        System.out.println(Arrays.toString(Arrays.copyOf(array, length)));
+//        System.out.println(length);
+//        System.out.println(Arrays.toString(array));
+//        System.out.println(Arrays.toString(Arrays.copyOf(array, length)));
         return Arrays.copyOf(array, length);
     }
 }

@@ -1,5 +1,4 @@
 package ru.job4j.calculator;
-
 /*
 * Class Calculator производит вычисления над числами
 * @author Sergei Nikiforov
@@ -7,9 +6,7 @@ package ru.job4j.calculator;
 * @version 1
 * */
 
-
 public class Calculator {
-
     /*
     * Сложение 2х чисел
     * @param first - первый аргумент

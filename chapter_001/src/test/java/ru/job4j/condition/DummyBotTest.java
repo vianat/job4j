@@ -18,7 +18,6 @@ public class DummyBotTest {
                 is("Привет, умник.")
         );
     }
-
     @Test
     public void whenByeBot() {
         DummyBot bot = new DummyBot();
@@ -27,7 +26,6 @@ public class DummyBotTest {
                 is("До скорой встречи.")
         );
     }
-
     @Test
     public void whenUnknownBot() {
         DummyBot bot = new DummyBot();

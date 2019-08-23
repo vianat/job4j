@@ -11,7 +11,6 @@ public class MaxTest {
         int result = max.max(0, 2);
         assertThat(result, is(2));
     }
-
     @Test
     public void whenLeftMoreThenRight() {
         Max max = new Max();
