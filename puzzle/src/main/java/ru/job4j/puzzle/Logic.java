@@ -82,12 +82,10 @@ public class Logic {
                 summLineVertical += table[in][out];
 
                 if (summLineHorizontal == table.length) {
-                    result = true;
-                    break;
+                    return true;
                 }
                 if (summLineVertical == table.length) {
-                    result = true;
-                    break;
+                    return true;
                 }
 
             }
