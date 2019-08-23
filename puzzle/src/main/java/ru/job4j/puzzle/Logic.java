@@ -77,16 +77,14 @@ public class Logic {
 
         for (int out = 0; out < table.length; out++) {
             for (int in = 0; in < table.length; in++) {
-
                 summLineHorizontal += table[out][in];
                 summLineVertical += table[in][out];
-
-                if (summLineHorizontal == table.length) {
-                    return true;
-                }
-                if (summLineVertical == table.length) {
-                    return true;
-                }
+            }
+            if (summLineHorizontal == table.length) {
+                return true;
+            }
+            if (summLineVertical == table.length) {
+                return true;
             }
             summLineHorizontal = 0;
             summLineVertical = 0;
