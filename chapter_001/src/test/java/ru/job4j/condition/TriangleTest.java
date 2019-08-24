@@ -20,4 +20,14 @@ public class TriangleTest {
         double expected = 20;
         assertThat(result, closeTo(expected, 0.1));
     }
+    @Test
+    public void distance3D() {
+        Point first = new Point(0, 0, 0);
+        Point second = new Point(5, 5, 5);
+        double result = Point.distance3d(first, second);
+//        Triangle triangle = new Triangle(new Point(0, 0, 0), new Point(5, 5, 5), new Point(5, 0, 0));
+//        double result = triangle.distance3d(); //не знаю как через треугольник вызвать
+        double expected = 8.66;
+        assertThat(result, closeTo(expected, 0.1));
+    }
 }
