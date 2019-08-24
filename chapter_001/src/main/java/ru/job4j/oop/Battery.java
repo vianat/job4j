@@ -6,19 +6,10 @@ public class Battery {
     public Battery(int size) {
         this.load = size;
     }
-    public void exchange(Battery another) {
-        int value = another.load;
-        this.load -= value;
-        another.load += value;
+    public int exchange(Battery another) {
+        another.load += this.load;
+        this.load = 0;
+        return another.load;
     }
 
-    public static void main(String[] args) {
-        Battery battHight = new Battery(55);
-        Battery battLow = new Battery(10);
-//        System.out.println("battHight before " + battHight.load);
-//        System.out.println("battLow before " + battLow.load);
-        battHight.exchange(battLow);
-//        System.out.println("battHight after " + battHight.load);
-//        System.out.println("battLow after " + battLow.load);
-    }
 }

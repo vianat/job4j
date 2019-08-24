@@ -24,7 +24,7 @@ public class MultiMaxTest {
         assertThat(result, is(22));
     }
     @Test
-    public void whenAllEuals() {
+    public void whenAllEquals() {
         MultiMax check = new MultiMax();
         int result = check.max(33, 33, 33);
         assertThat(result, is(33));
