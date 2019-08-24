@@ -1,6 +1,16 @@
 package ru.job4j.condition;
 
 public class Triangle {
+    private Point first;
+    private Point second;
+    private Point third;
+
+    public Triangle(Point ap, Point bp, Point cp) {
+        this.first = ap;
+        this.second = bp;
+        this.third = cp;
+    }
+
     /**
      * Метод вычисления полупериметра по длинам сторон.
      * Формула.
@@ -35,18 +45,14 @@ public class Triangle {
      * √ p *(p - a) * (p - b) * (p - c)
      * @return Вернуть площадь, если треугольник существует или -1.
      */
-    public double area(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public double area(Triangle tri) {
         double rsl = -1;
-//        double a = new Point().distance(x1, y1, x2, y2);
-        double a = new Point(x1, y1).distance(new Point(x2, y2));
-//        double b = new Point().distance(x2, y2, x3, y3);
-        double b = new Point(x2, y2).distance(new Point(x3, y3));
-//        double c = new Point().distance(x1, y1, x3, y3);
-        double c = new Point(x1, y1).distance(new Point(x3, y3));
-        double p = period(a, b, c);
-
-        if (this.exist(a, b, c)) {
-            rsl = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        double ab = this.first.distance(this.second);
+        double bc = this.second.distance(tri.third);
+        double ac = tri.first.distance(tri.third);
+        double p = period(ab, bc, ac);
+        if (this.exist(ab, bc, ac)) {
+            rsl = Math.sqrt(p*(p - ab)*(p - bc)*(p - ac));
         }
         return rsl;
     }
