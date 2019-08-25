@@ -52,7 +52,7 @@ public class Triangle {
         double ac = tri.first.distance(tri.third);
         double p = period(ab, bc, ac);
         if (this.exist(ab, bc, ac)) {
-            rsl = Math.sqrt(p*(p - ab)*(p - bc)*(p - ac));
+            rsl = Math.sqrt(p * (p - ab) * (p - bc) * (p - ac));
         }
         return rsl;
     }
