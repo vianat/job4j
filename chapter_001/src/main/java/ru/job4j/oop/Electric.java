@@ -5,5 +5,7 @@ public class Electric extends Engineer {
     public int voltageType;
     public boolean hightVoltageAccess;
 
-    public int ckeckVoltage() {}
+//    public int ckeckVoltage() {
+//
+//    }
 }

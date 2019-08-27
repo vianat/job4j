@@ -7,7 +7,13 @@ public class Dentist extends Doctor {
     public int repairToothSkill;
     public boolean haveAnesthesia;
 
-    public boolean checkCaries() {}
-    public boolean repairTooth() {}
-    public boolean deleteTooth() {}
+//    public boolean checkCaries() {
+//
+//    }
+//    public boolean repairTooth() {
+//
+//    }
+//    public boolean deleteTooth() {
+//
+//    }
 }

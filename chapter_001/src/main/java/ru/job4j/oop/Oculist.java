@@ -5,6 +5,10 @@ public class Oculist extends Doctor {
     public String specialization;
     public boolean haveAllTools;
 
-    public int checkVision() {}
-    public boolean treatEyes() {}
+//    public int checkVision() {
+//
+//    }
+//    public boolean treatEyes() {
+//
+//    }
 }
