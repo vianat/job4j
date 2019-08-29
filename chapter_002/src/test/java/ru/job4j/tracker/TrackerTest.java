@@ -13,8 +13,8 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "simple desc");
         tracker.add(item);
-        Item result = tracker.findById(item.getId());
-        assertThat(result.getName(), is(item.getName()));
+        boolean result = tracker.findById(item.getId());
+        assertThat(result, is(item.getName()));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -29,9 +29,9 @@ public class TrackerTest {
         // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
         // Обновляем заявку в трекере.
-        tracker.replace(previous.getId(), next.getDesc());
+        tracker.replace(next);
         // Проверяем, что заявка с таким id имеет новые имя test2.
-        assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
+        assertThat(tracker.findById(previous.getId()), is("test2"));
     }
     @Test
     public void delete() {

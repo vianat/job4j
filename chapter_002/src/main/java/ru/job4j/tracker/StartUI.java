@@ -63,49 +63,58 @@ public class StartUI {
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с Id : " + item.getId() + " -----------");
     }
+
     // Метод реализует отображение всех заявок в хранилище.
     private void showAll() {
         System.out.println("Показать все заявки.");
-        this.tracker.findAll();
-        showMenu();
+        Item[] items = this.tracker.findAll();
+        if (items.length == 0) {
+            System.out.println("Заявок нет");
+        } else {
+            for (int i = 0; i < items.length; i++) {
+                System.out.println("items[" + i + "] = " + items[i]);
+            }
+        }
     }
+
     // Метод изменяет заявку.
     private void edit() {
         System.out.println("Изменить заявку :");
         String id = this.input.ask("Введите id заявки :");
+        String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
 
-        boolean flag = this.tracker.replace(id, desc);
+        Item newItem = new Item(name, desc);
+
+        boolean flag = this.tracker.replace(newItem);
 
         if(flag) {
             System.out.println("Заявка "+ id +" была изменена");
         }
-        showMenu();
     }
+
     // Метод поиска по имени.
     private void findById() {
         System.out.println("Поиск заявки по id:");
         String id = this.input.ask("Введите id заявки :");
 
-//        Item finded = this.tracker.findById(id);
-//        System.out.println(finded);
-
-        if(this.tracker.findById(id) != null) {
+        if(this.tracker.findById(id)) {
             System.out.println("Заявка с id > "+ id +" < найдена !");
         }
-        showMenu();
     }
+
     // Метод поиска по имени.
     private void findName() {
         System.out.println("Поиск по имени заявки :");
         String name = this.input.ask("Введите имя заявки :");
 
-        if (this.tracker.findByName(name).getName().equals(name)) {
+        if (this.tracker.findByName(name) != null) {
             System.out.println("Заявка с именем > "+ name +" < найдена !");
+        } else {
+            System.out.println("Заявка с именем > "+ name +" < НЕ найдена !");
         }
-
-        showMenu();
     }
+
     private void delete() {
         System.out.println("Удаление заявки по id :");
         String id = this.input.ask("Введите id :");
@@ -115,7 +124,6 @@ public class StartUI {
         if (flag) {
             System.out.println("Заявка " + id + " была удалена !");
         }
-        showMenu();
     }
 
 

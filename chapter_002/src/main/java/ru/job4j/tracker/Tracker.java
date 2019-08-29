@@ -15,11 +15,12 @@ public class Tracker {
         Random rand = new Random();
         return String.valueOf(rand.nextLong() + System.currentTimeMillis());
     }
-    public boolean replace(String id, String name) {
+    public boolean replace(Item item) {
         boolean result = false;
         for(int x = 0; x < items.length; x++) {
-            if(items[x].getId().equals(id)){
-                items[x].setName(name);
+            if(items[x].getId().equals(item.getId())){
+                items[x].setName(item.getName());
+                items[x].setDesc(item.getDesc());
                 result = true;
                 break;
             }
@@ -43,9 +44,9 @@ public class Tracker {
         }
         return result;
     }
+
     public Item[] findAll() {
-        // проверяем сколько элементов в массиве с таким именем
-        System.out.println("items.length = "  + items.length);
+        // проверяем сколько элементов в массиве != null
         int count = 0;
         for (; count < this.items.length; count++) {
             if (items[count] == null) {
@@ -53,7 +54,7 @@ public class Tracker {
                 count++;
             }
         }
-        // возвращает копию массива this.items без null элементов;
+        // создаём копию массива this.items без null элементов;
         Item[] newItem = new Item[count];
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
@@ -61,53 +62,38 @@ public class Tracker {
                 newItem[i] = items[i];
             }
         }
-        // печатаем что внутри items;
-        for (int i = 0; i < newItem.length; i++) {
-            System.out.println("newItem[" + i + "] = " + newItem[i]);
-        }
         this.items = newItem;
         return items;
     }
+
     public Item findByName(String key) {
-        // проверяем сколько элементов в массиве с таким именем
-//        int count = 0;
-//        for ( ; count < this.items.length; count++) {
-//            if (this.items[count].getName().equals(key)) {
-//                count++;
-//            }
-//        }
-        // проверяет в цикле все элементы массива this.items,
-        // сравниваем name с аргументом метода String key.
-        // Элементы, у которых совпадает name, копирует в результирующий массив и возвращает его;
-        // возвращает копию массива this.items без null элементов;
-//        Item[] newItem = new Item[count];
-//        for (int i = 0; i < this.items.length; i++) {
-//            if (this.items[i].getName().equals(key)) {
-//                newItem[i] = this.items[i];
-//            }
-//        }
-//        return newItem;
+        // проверяет в цикле все элементы массива this.items.
+        // сравниваем name с key.
+
         for (int i = 0; i < this.items.length; i++) {
             if (this.items[i].getName().equals(key)) {
-//                System.out.println(items[i].getId());
-//                System.out.println(items[i].getName());
+                System.out.println("id заявки: " + items[i].getId());
+                System.out.println("имя заявки: " + items[i].getName());
+                System.out.println("описание заявки: " + items[i].getDesc());
                 return this.items[i];
             }
         }
         return null;
     }
-    public Item findById(String id) {
-        // проверяет в цикле все элементы массива this.items,
-        // сравнивая id с аргументом String id и возвращает найденный Item.
-        // Если Item не найден - возвращает null.
+
+    public boolean findById(String id) {
+        // проверяет в цикле все элементы массива this.items.
+        // сравнивая id с аргументом String id и возвращает true если нашел.
+        // Если Item не найден - возвращает false.
         for (int i = 0; i < this.items.length; i++) {
             if (this.items[i].getId().equals(id)) {
-//                System.out.println(items[i].getId());
-//                System.out.println(items[i].getName());
-                return this.items[i];
+                System.out.println("id заявки: " + items[i].getId());
+                System.out.println("имя заявки: " + items[i].getName());
+                System.out.println("описание заявки: " + items[i].getDesc());
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
 
