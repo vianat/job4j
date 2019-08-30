@@ -13,8 +13,8 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "simple desc");
         tracker.add(item);
-        boolean result = tracker.findById(item.getId());
-        assertThat(result, is(item.getName()));
+        Item findItem = tracker.findByName(item.getName());
+        assertThat(findItem.getName(), is(item.getName()));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -24,14 +24,14 @@ public class TrackerTest {
         tracker.add(previous);
         // Создаем новую заявку.
         Item next = new Item("test2", "simple desc");
-//        tracker.add(next);
+        tracker.add(next);
         System.out.println(tracker);
         // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
         // Обновляем заявку в трекере.
         tracker.replace(next);
-        // Проверяем, что заявка с таким id имеет новые имя test2.
-        assertThat(tracker.findById(previous.getId()), is("test2"));
+        // Проверяем, что заявка с таким id имеет новое имя test2.
+        assertThat(tracker.findById(previous.getId()), is(true));
     }
     @Test
     public void delete() {
@@ -46,9 +46,9 @@ public class TrackerTest {
         tracker.add(second);
         tracker.add(third);
 
-        System.out.println(Arrays.toString(tracker.findAll()));// до удаления
+        System.out.println(Arrays.toString(tracker.findAll())); // до удаления
         tracker.delete(second.getId());
-        System.out.println(Arrays.toString(tracker.findAll()));// после удаления
+        System.out.println(Arrays.toString(tracker.findAll())); // после удаления
 
         //findByName возвращаем массив item, что написать в expected, ????
 //        assertThat(tracker.findByName(second.getName()), result[0]);

@@ -17,8 +17,8 @@ public class Tracker {
     }
     public boolean replace(Item item) {
         boolean result = false;
-        for(int x = 0; x < items.length; x++) {
-            if(items[x].getId().equals(item.getId())){
+        for (int x = 0; x < items.length; x++) {
+            if (items[x].getId().equals(item.getId())) {
                 items[x].setName(item.getName());
                 items[x].setDesc(item.getDesc());
                 result = true;
@@ -29,8 +29,8 @@ public class Tracker {
     }
     public boolean delete(String id) {
         boolean result = false;
-        for(int x = 0; x < this.items.length; x++) {
-            if(this.items[x].getId().equals(id)){
+        for (int x = 0; x < this.items.length; x++) {
+            if (this.items[x].getId().equals(id)) {
                 //создать новый массив - 1
                 Item[] newItems = new Item[this.items.length - 1];
                 //скопировать в новый, начало старого массива и конец, исключая искомый элемент
@@ -46,19 +46,17 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        // проверяем сколько элементов в массиве != null
+        // проверяем сколько элементов в массиве != null;
         int count = 0;
         for (; count < this.items.length; count++) {
-            if (items[count] == null) {
-            }else {
+            if (items[count] != null) {
                 count++;
             }
         }
-        // создаём копию массива this.items без null элементов;
+        // создаём копию массива this.items без null элементов.
         Item[] newItem = new Item[count];
         for (int i = 0; i < items.length; i++) {
-            if (items[i] == null) {
-            } else {
+            if (items[i] != null) {
                 newItem[i] = items[i];
             }
         }

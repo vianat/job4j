@@ -7,7 +7,7 @@ public class StartUI {
     private static final String EDIT = "2";      // Изменить заявку.
     private static final String DELETE = "3";    // Удалить заявку.
     private static final String FINDBYID = "4";  // Найти заявку по ID.
-    private static final String FINDBYNAME = "5";// Найти заявку по имени.
+    private static final String FINDBYNAME = "5"; // Найти заявку по имени.
     private static final String EXIT = "6";      // Выход
 
     private final Input input;                   // Получение данных от пользователя.
@@ -88,8 +88,8 @@ public class StartUI {
 
         boolean flag = this.tracker.replace(newItem);
 
-        if(flag) {
-            System.out.println("Заявка "+ id +" была изменена");
+        if (flag) {
+            System.out.println("Заявка " + id + " была изменена");
         }
     }
 
@@ -98,8 +98,8 @@ public class StartUI {
         System.out.println("Поиск заявки по id:");
         String id = this.input.ask("Введите id заявки :");
 
-        if(this.tracker.findById(id)) {
-            System.out.println("Заявка с id > "+ id +" < найдена !");
+        if (this.tracker.findById(id)) {
+            System.out.println("Заявка с id > " + id + " < найдена !");
         }
     }
 
@@ -109,9 +109,9 @@ public class StartUI {
         String name = this.input.ask("Введите имя заявки :");
 
         if (this.tracker.findByName(name) != null) {
-            System.out.println("Заявка с именем > "+ name +" < найдена !");
+            System.out.println("Заявка с именем > " + name + " < найдена !");
         } else {
-            System.out.println("Заявка с именем > "+ name +" < НЕ найдена !");
+            System.out.println("Заявка с именем > " + name + " < НЕ найдена !");
         }
     }
 
