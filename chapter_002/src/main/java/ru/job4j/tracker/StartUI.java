@@ -50,10 +50,6 @@ public class StartUI {
 
 
 
-
-
-
-
     // Метод реализует добавление новой заявки в хранилище.
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
@@ -66,7 +62,6 @@ public class StartUI {
 
     // Метод реализует отображение всех заявок в хранилище.
     private void showAll() {
-        System.out.println("Показать все заявки.");
         Item[] items = this.tracker.findAll();
         if (items.length == 0) {
             System.out.println("Заявок нет");
@@ -85,21 +80,24 @@ public class StartUI {
         String desc = this.input.ask("Введите описание заявки :");
 
         Item newItem = new Item(name, desc);
+        tracker.add(newItem);
 
-        boolean flag = this.tracker.replace(newItem);
-
-        if (flag) {
-            System.out.println("Заявка " + id + " была изменена");
+        if (this.tracker.replace(newItem)) {
+            System.out.println("Заявка с id: " + id + " была изменена !");
+        } else {
+            System.out.println("Заявка с id: " + id + " НЕ найдена !");
         }
     }
 
-    // Метод поиска по имени.
+    // Метод поиска по id.
     private void findById() {
         System.out.println("Поиск заявки по id:");
         String id = this.input.ask("Введите id заявки :");
 
-        if (this.tracker.findById(id)) {
+        if (this.tracker.findById(id) != null) {
             System.out.println("Заявка с id > " + id + " < найдена !");
+        } else if (this.tracker.findById(id) == null){
+            System.out.println("Заявка с id > " + id + " < НЕ найдена !");
         }
     }
 
@@ -108,11 +106,14 @@ public class StartUI {
         System.out.println("Поиск по имени заявки :");
         String name = this.input.ask("Введите имя заявки :");
 
-        if (this.tracker.findByName(name) != null) {
+        if (tracker.findByName(name).length == 1) {
             System.out.println("Заявка с именем > " + name + " < найдена !");
+        } else if (tracker.findByName(name).length > 1){
+            System.out.println("Заявки с именами > " + name + " < найдены !");
         } else {
             System.out.println("Заявка с именем > " + name + " < НЕ найдена !");
         }
+
     }
 
     private void delete() {
@@ -122,13 +123,11 @@ public class StartUI {
         boolean flag = this.tracker.delete(id);
 
         if (flag) {
-            System.out.println("Заявка " + id + " была удалена !");
+            System.out.println("Заявка с id: " + id + " была удалена !");
+        } else {
+            System.out.println("Заявка с id: " + id + " НЕ была удалена !");
         }
     }
-
-
-
-
 
 
 
@@ -136,13 +135,13 @@ public class StartUI {
     private void showMenu() {
         System.out.println("--------------------------------------------------");
         System.out.println("Меню :");
-        System.out.println("Добавить заявку - 0");
-        System.out.println("Показать все заявки - 1");
-        System.out.println("Изменить заявку - 2");
-        System.out.println("Удалить заявку - 3");
-        System.out.println("Найти заявку по ID - 4");
-        System.out.println("Найти заявку по имени - 5");
-        System.out.println("Выйти из программы - 6");
+        System.out.println("0 - Добавить заявку");
+        System.out.println("1 - Показать все заявки");
+        System.out.println("2 - Изменить заявку");
+        System.out.println("3 - Удалить заявку");
+        System.out.println("4 - Найти заявку по ID");
+        System.out.println("5 - Найти заявку по имени");
+        System.out.println("6 - Выйти из программы");
         System.out.println("--------------------------------------------------");
     }
     /**Запускт программы.

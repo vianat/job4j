@@ -13,8 +13,8 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "simple desc");
         tracker.add(item);
-        Item findItem = tracker.findByName(item.getName());
-        assertThat(findItem.getName(), is(item.getName()));
+        Item[] findItem = tracker.findByName(item.getName());
+        assertThat(findItem[0].getName(), is(item.getName()));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
