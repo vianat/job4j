@@ -17,31 +17,25 @@ public class Tracker {
         return String.valueOf(rand.nextLong() + System.currentTimeMillis());
     }
 
-    public boolean replace(Item item) {
+    public boolean replace(String id, Item item) {
         System.out.println(item.getId());
         for (int x = 0; x < this.items.length; x++) {
-            System.out.println(items[x].getId() + " and "+ item.getId());
-
-            if (items[x].getId().equals(item.getId())) {
-                items[x].setId(item.getId());
-                items[x].setName(item.getName());
-                items[x].setDesc(item.getDesc());
+            if (items[x].getId().equals(id)) {
+                items[x] = item;
+                item.setId(id);
                 return true;
             }
         }
         return false;
     }
+
     public boolean delete(String id) {
         boolean result = false;
+
         for (int x = 0; x < position; x++) {
             if (this.items[x].getId().equals(id)) {
-                //создать новый массив - 1
-                Item[] newItems = new Item[this.items.length - 1];
-                //скопировать в новый, начало старого массива и конец, исключая искомый элемент
-                System.arraycopy(this.items, 0, newItems, 0, x);
-                System.arraycopy(this.items, x + 1, newItems, x, position - 1 - x);
-                //перезаписать в старый массив, новый
-                this.items = newItems;
+                System.arraycopy(this.items, x + 1, this.items, x, position - 1 - x);
+                items[--position] = null;
                 result = true;
                 break;
             }

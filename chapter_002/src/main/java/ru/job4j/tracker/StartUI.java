@@ -80,9 +80,8 @@ public class StartUI {
         String desc = this.input.ask("Введите описание заявки :");
 
         Item newItem = new Item(name, desc);
-        tracker.add(newItem);
 
-        if (this.tracker.replace(newItem)) {
+        if (this.tracker.replace(id, newItem)) {
             System.out.println("Заявка с id: " + id + " была изменена !");
         } else {
             System.out.println("Заявка с id: " + id + " НЕ найдена !");
@@ -96,7 +95,7 @@ public class StartUI {
 
         if (this.tracker.findById(id) != null) {
             System.out.println("Заявка с id > " + id + " < найдена !");
-        } else if (this.tracker.findById(id) == null){
+        } else if (this.tracker.findById(id) == null) {
             System.out.println("Заявка с id > " + id + " < НЕ найдена !");
         }
     }
@@ -108,7 +107,7 @@ public class StartUI {
 
         if (tracker.findByName(name).length == 1) {
             System.out.println("Заявка с именем > " + name + " < найдена !");
-        } else if (tracker.findByName(name).length > 1){
+        } else if (tracker.findByName(name).length > 1) {
             System.out.println("Заявки с именами > " + name + " < найдены !");
         } else {
             System.out.println("Заявка с именем > " + name + " < НЕ найдена !");

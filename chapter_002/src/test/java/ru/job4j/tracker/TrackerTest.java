@@ -29,7 +29,7 @@ public class TrackerTest {
         // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
         // Обновляем заявку в трекере.
-        tracker.replace(next);
+        tracker.replace(next.getId(), next);
         // Проверяем, что заявка с таким id имеет новое имя test2.
         assertThat(tracker.findById(previous.getId()), is(true));
     }
