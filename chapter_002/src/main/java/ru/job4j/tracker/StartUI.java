@@ -105,10 +105,16 @@ public class StartUI {
         System.out.println("Поиск по имени заявки :");
         String name = this.input.ask("Введите имя заявки :");
 
-        if (tracker.findByName(name).length == 1) {
+        Item[] search = tracker.findByName(name);
+
+        if (search.length == 1) {
             System.out.println("Заявка с именем > " + name + " < найдена !");
-        } else if (tracker.findByName(name).length > 1) {
+            System.out.println(search);
+        } else if (search.length > 1) {
             System.out.println("Заявки с именами > " + name + " < найдены !");
+            for (Item x : search) {
+                System.out.println(x);
+            }
         } else {
             System.out.println("Заявка с именем > " + name + " < НЕ найдена !");
         }
