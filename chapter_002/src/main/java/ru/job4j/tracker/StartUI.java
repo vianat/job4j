@@ -16,9 +16,11 @@ public class StartUI {
      * @param input ввод данных.
      * @param tracker хранилище заявок.
      */
-    public StartUI(Input input, Tracker tracker) {
+    public StartUI(Input input) {
+        Tracker tracker = new Tracker();
         this.input = input;
         this.tracker = tracker;
+
     }
 
     /**
@@ -153,6 +155,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ConsoleInput()).init();
     }
 }
