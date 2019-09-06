@@ -1,6 +1,7 @@
 package ru.job4j.condition;
-import static java.lang.Math.sqrt;
+
 import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 public class Point {
     private int x;
     private int y;

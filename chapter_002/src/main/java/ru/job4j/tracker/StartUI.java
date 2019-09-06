@@ -22,6 +22,12 @@ public class StartUI {
         this.tracker = tracker;
 
     }
+    public StartUI(Tracker track, Input input) {
+        Tracker tracker = new Tracker();
+        tracker = track;
+        this.input = input;
+        this.tracker = tracker;
+    }
 
     /**
      * Основой цикл программы.

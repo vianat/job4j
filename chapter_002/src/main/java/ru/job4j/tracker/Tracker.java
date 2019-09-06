@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 public class Tracker {
 
     private Item[] items = new Item[20];
@@ -20,8 +21,9 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         for (int x = 0; x < this.items.length; x++) {
             if (items[x].getId().equals(id)) {
-                items[x] = item;
-                item.setId(id);
+                items[x].setName(item.getName());
+                items[x].setDesc(item.getDesc());
+                items[x].setId(id);
                 return true;
             }
         }
@@ -30,14 +32,13 @@ public class Tracker {
 
     public boolean delete(String id) {
         boolean result = false;
-        System.out.println("from delete " + id);
-
-        for (int y = 0; y < this.items.length; y++) {
-            System.out.println();
-        }
+//        System.out.println("from delete " + id);
+//        for (int y = 0; y < this.items.length; y++) {
+//            System.out.println();
+//        }
 
         for (int x = 0; x < position; x++) {
-            System.out.println("check " + this.items[x].getId());
+//            System.out.println("check " + this.items[x].getId());
             if (this.items[x].getId().equals(id)) {
                 System.arraycopy(this.items, x + 1, this.items, x, position - 1 - x);
                 items[--position] = null;
