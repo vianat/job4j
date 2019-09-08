@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.Arrays;
 import java.util.Random;
+
 public class Tracker {
 
     private Item[] items = new Item[20];
@@ -19,11 +20,9 @@ public class Tracker {
     }
 
     public boolean replace(String id, Item item) {
-        for (int x = 0; x < this.items.length; x++) {
+        for (int x = 0; x < position; x++) {
             if (items[x].getId().equals(id)) {
-                items[x].setName(item.getName());
-                items[x].setDesc(item.getDesc());
-                items[x].setId(id);
+                items[x] = item;
                 return true;
             }
         }
@@ -32,13 +31,8 @@ public class Tracker {
 
     public boolean delete(String id) {
         boolean result = false;
-//        System.out.println("from delete " + id);
-//        for (int y = 0; y < this.items.length; y++) {
-//            System.out.println();
-//        }
 
         for (int x = 0; x < position; x++) {
-//            System.out.println("check " + this.items[x].getId());
             if (this.items[x].getId().equals(id)) {
                 System.arraycopy(this.items, x + 1, this.items, x, position - 1 - x);
                 items[--position] = null;
@@ -50,7 +44,6 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        // возвращает массив со всеми элементами.
         return Arrays.copyOf(this.items, this.position);
     }
 
@@ -74,11 +67,11 @@ public class Tracker {
         return matchArr;
     }
 
-    // метод возвращает item, если найдёт по id.
+    // возвращает item, если найдёт по id.
     public Item findById(String id) {
         for (int i = 0; i < position; i++) {
-            if (this.items[i].getId().equals(id)) {
-                return this.items[i];
+            if (items[i].getId().equals(id)) {
+                return items[i];
             }
         }
         return null;

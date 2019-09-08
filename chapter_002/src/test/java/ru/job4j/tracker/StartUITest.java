@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -41,9 +40,22 @@ public class StartUITest {
 //    }
 
     @Test
+    public void findAll() {
+        Tracker tracker = new Tracker();
+        // Напрямую добавляем заявку
+        Item item = tracker.add(new Item("test name", "desc"));
+        // создаём StubInput с последовательностью действий(производим замену заявки)
+        Input input =  new StubInput(new String[]{"1", "6"});
+        // создаём StartUI и вызываем метод init()
+        new StartUI(input).init();
+        // проверяем, что введённое при эмуляции.
+        assertThat(tracker.findAll(), is(tracker.findByName(item.getName())));
+    }
+
+    @Test
     public void addItem() {
         Tracker tracker = new Tracker();
-        //создаём StubInput с последовательностью действий
+        // создаём StubInput с последовательностью действий
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(tracker, input).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
@@ -53,12 +65,11 @@ public class StartUITest {
     @Test
     public void updateItem() {
         Tracker tracker = new Tracker();
-        //Напрямую добавляем заявку
+        // Напрямую добавляем заявку
         Item item = tracker.add(new Item("test name", "desc"));
-        //создаём StubInput с последовательностью действий(производим замену заявки)
+        // создаём StubInput с последовательностью действий(производим замену заявки)
         Input input =  new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         // создаём StartUI и вызываем метод init()
-//        new StartUI(input).init();
         new StartUI(tracker, input).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
@@ -85,12 +96,12 @@ public class StartUITest {
     @Test
     public void findByName() {
         Tracker tracker = new Tracker();
-        //Напрямую добавляем заявку
+        // Напрямую добавляем заявку
         Item item = tracker.add(new Item("test name", "desc"));
         //создаём StubInput с последовательностью действий(производим замену заявки)
         Input input =  new StubInput(new String[]{"5", item.getName(), "6"});
         // создаём StartUI и вызываем метод init()
-        //new StartUI(input).init();
+        // new StartUI(input).init();
         new StartUI(tracker, input).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         Item result = tracker.findByName(item.getName())[0];
@@ -100,9 +111,9 @@ public class StartUITest {
     @Test
     public void findByID() {
         Tracker tracker = new Tracker();
-        //Напрямую добавляем заявку
+        // Напрямую добавляем заявку
         Item item = tracker.add(new Item("test name", "desc"));
-        //создаём StubInput с последовательностью действий(производим замену заявки)
+        // создаём StubInput с последовательностью действий(производим замену заявки)
         Input input =  new StubInput(new String[]{"4", item.getId(), "6"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input).init();

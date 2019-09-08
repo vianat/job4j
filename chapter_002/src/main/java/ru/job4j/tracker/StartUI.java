@@ -60,12 +60,12 @@ public class StartUI {
 
     // Метод реализует добавление новой заявки в хранилище.
     private void createItem() {
-        System.out.println("------------ Добавление новой заявки --------------");
+        System.out.println("---- Добавление новой заявки ----");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
-        System.out.println("------------ Новая заявка с Id : " + item.getId() + " -----------");
+        System.out.println("---- Новая заявка с Id : " + item.getId() + " добавлена");
     }
 
     // Метод реализует отображение всех заявок в хранилище.
@@ -146,7 +146,6 @@ public class StartUI {
 
 
     private void showMenu() {
-        System.out.println("--------------------------------------------------");
         System.out.println("Меню :");
         System.out.println("0 - Добавить заявку");
         System.out.println("1 - Показать все заявки");
@@ -155,7 +154,6 @@ public class StartUI {
         System.out.println("4 - Найти заявку по ID");
         System.out.println("5 - Найти заявку по имени");
         System.out.println("6 - Выйти из программы");
-        System.out.println("--------------------------------------------------");
     }
     /**Запускт программы.
      * @param args
