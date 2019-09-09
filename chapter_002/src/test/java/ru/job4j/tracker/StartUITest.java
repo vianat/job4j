@@ -1,43 +1,32 @@
 package ru.job4j.tracker;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
-    /**
-     * Это поле содержит последовательность ответов пользователя.
-     * Например. Если пользователь хочет выбрать добавление новой заявки ему нужно ввести:
-     * 0 - выбор пункта меня "добавить новую заявку".
-     * name - имя заявки
-     * desc - описание заявки
-     * 6 - выйти из трекера.
-     */
-    private String[] value;
+    // поле содержит дефолтный вывод в консоль.
+    private final PrintStream stdout = System.out;
+    // буфер для результата.
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    /**
-     * Поле считает количество вызовов метода ask.
-     * При каждом вызове надо передвинуть указатель на новое число.
-     */
-    private int position;
-
-    public String[] stubInput(String[] value) { // переименовал для чекстайла было: StubInput
-        this.value = value;
-        return this.value;
+    @Before
+    public void beforeTests() {
+        System.out.println("@before method");
+        System.setOut(new PrintStream(this.out));
     }
 
-    /**
-     * Давайте рассмотрим, как работает этот метод.
-     * у нас есть объект в котором содержатся заранее продуманные ответы.
-     * При последовательном вызове метода ask нам надо возвращать соответствующие данные.
-     * Как если бы мы симулировали поведение пользователя.
-     * Для этого при каждом вызове метода ask мы увеличиваем счетчик и
-     * при следующем вызове он вернет нам новое значение.
-     */
-//    @Override
-//    public String ask(String question) {
-//        return this.value[this.position++];
-//    }
+    @After
+    public void afterTests() {
+        System.out.println("@after method");
+        System.setOut(this.stdout);
+    }
 
     @Test
     public void findAll() {
@@ -49,6 +38,7 @@ public class StartUITest {
         // создаём StartUI и вызываем метод init()
         new StartUI(input).init();
         // проверяем, что введённое при эмуляции.
+        System.out.println(new String(out.toByteArray()));
         assertThat(tracker.findAll(), is(tracker.findByName(item.getName())));
     }
 
