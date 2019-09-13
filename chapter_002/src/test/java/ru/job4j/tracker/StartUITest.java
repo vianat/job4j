@@ -190,6 +190,7 @@ public class StartUITest {
 
     @Test
     public void deleteItem() {
+
         Tracker tracker = new Tracker();
         // добавляем заявку
         Item item = tracker.add(new Item("test name", "desc"));
