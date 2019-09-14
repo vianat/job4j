@@ -34,14 +34,12 @@ public class StartUITest {
     @Test
     public void findAll() {
         Tracker tracker = new Tracker();
-        // Напрямую добавляем заявку
-        Item item = tracker.add(new Item("test name", "desc"));
+        Item item =  tracker.add(new Item("test name", "desc"));
         // создаём StubInput с последовательностью действий(производим замену заявки)
         Input input =  new StubInput(new String[]{"1", "6"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input).init();
         // проверяем, что введённое при эмуляции.
-        // System.out.println(new String(out.toByteArray()));
         assertThat(
                 new String(out.toByteArray()),
                 Is.is(
@@ -113,7 +111,7 @@ public class StartUITest {
                                 .append(System.lineSeparator())
                                 .append("---- Добавление новой заявки ----")
                                 .append(System.lineSeparator())
-                                .append("---- Новая заявка с Id :  добавлена")
+                                .append("---- Новая заявка с Id :" + tracker.findById(item.getId()).getId() + "  добавлена")
                                 .append(System.lineSeparator())
                                 .append("Меню :")
                                 .append(System.lineSeparator())
